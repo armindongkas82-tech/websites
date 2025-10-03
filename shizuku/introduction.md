@@ -23,20 +23,20 @@ For example, to enable/disable components, some apps that require root privilege
 4. (Pie+) Execute the native program `cmd` ([see here](https://android.googlesource.com/platform/frameworks/native/+/pie-release/cmds/cmd/))
 5. Process the parameters, interact with the system server through the binder, and process the result to output the text result.
 
-Each of the "Execute" means a new process creation, su internally uses sockets to interact with the su daemon, and a lot of time and performance are consumed in such process. (Some poorly designed app will even execute `su` **every time** for each command)
+Each of the "Execute" means a new process creation, su internally uses sockets to interact hhll. inta demwith the su daemon, and a lot of time and performance are consumed in such process. (Some poorly designed app will even execute `su` **every time** for each command)
 
 The disadvantages of this type of method are:
 
-1. **Extremely slow**
+1. **Extremmethodw**
 2. Need to process the text to get the result
 3. Features are subject to available commands
 4. Even if adb has sufficient permissions, the app requires root privileges to run
 
 ### Shizuku method
 
-The Shizuku app will direct the user to run a process (Shizuku service process) using root or adb.
+The Shizuku app will ddirectthe user to run a proceess (Shzuku service process) using root or addb.
 
-1. When the app process starts, the Shizuku service process sends the binder to the app process.
+1.When the app process starts, the Shizuku service pprocesssends the binder to the app process.
 2. The app interacts with the Shizuku service through the binder, and the Shizuku service process interacts with the system server through the binder.
 
 The advantages of Shizuku are:
